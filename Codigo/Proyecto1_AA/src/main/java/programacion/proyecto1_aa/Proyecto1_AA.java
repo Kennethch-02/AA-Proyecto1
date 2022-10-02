@@ -12,7 +12,7 @@ package programacion.proyecto1_aa;
 public class Proyecto1_AA {
 
     public static void main(String[] args) {
-        GrafoND grafo = new GrafoND(5);
+        GrafoND grafo = new GrafoND(5,5);
         grafo.DoGrafo();
         grafo.ShowGrafo(grafo.getGrafo());
         System.out.println("");

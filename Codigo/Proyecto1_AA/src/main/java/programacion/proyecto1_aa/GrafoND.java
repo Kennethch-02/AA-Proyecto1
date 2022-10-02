@@ -15,8 +15,10 @@ import java.util.List;
  */
 public class GrafoND {
     private int size;
+    private int aristas;
     private List<Tupla> grafo;
-    public GrafoND(int Size) {
+    public GrafoND(int Size, int Aristas) {
+        aristas = Aristas;
         size = Size;
         grafo = new ArrayList<Tupla>();
     }
@@ -24,11 +26,13 @@ public class GrafoND {
         return grafo;
     }
     public void DoGrafo(){
+        int Aristas = aristas;
         for (int vertice1 = 0; vertice1<size;vertice1++){
             for (int vertice2 = 0; vertice2<size;vertice2++){
                 if(vertice1!=vertice2){
-                    if((int) (Math.random()*2) == 1){
+                    if((int) (Math.random()*2) == 1 && Aristas>0){
                         grafo.add(new Tupla(vertice1,vertice2));
+                        Aristas--;
                     }
                 }
             }
@@ -38,6 +42,7 @@ public class GrafoND {
             DoGrafo();
         }else{
             System.out.println("Graph Size: " + CountSize());
+            System.out.println("Graph Arista Size: " + grafo.size());
         }
     }
     private int CountSize(){
