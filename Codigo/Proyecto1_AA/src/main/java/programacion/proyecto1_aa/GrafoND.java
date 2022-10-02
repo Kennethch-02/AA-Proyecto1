@@ -61,7 +61,37 @@ public class GrafoND {
     }
     
     public void MinSubFuerzaBruta(){
+        
+        if (this.grafo.size() < 1) {    //Valida que haya un grafo por revisar
+            System.out.println("No hay grafos por revisar.");
+            return;
+        }
+        
+        ArrayList verticesNecesitados = new ArrayList();
+        ArrayList verticesRelacionados = new ArrayList();
+        
+        for (Tupla vertices: this.grafo){
+            //Valida el primer vertice
+            if(verticesNecesitados.contains(vertices.getA())== false & 
+                verticesRelacionados.contains(vertices.getA()) == false){
+                verticesNecesitados.add(vertices.getA());
+            }
+            //Valida el primer vertice
+            if (verticesRelacionados.contains(vertices.getA()) == true &
+                verticesNecesitados.contains(vertices.getA())== false) {
+                verticesNecesitados.add(vertices.getA());
+            }
+            if (verticesRelacionados.contains(vertices.getB()) == false &
+                verticesNecesitados.contains(vertices.getB())== false) {
+                verticesRelacionados.add(vertices.getB());
+            }
+        }//end for
+        System.out.println("\nSe necesitaron los siguientes vertices:");
+        for (Object vertice : verticesNecesitados) {
+            System.out.println(vertice);
+        }
     }
+    
     public void MinSubHeuristica(){
         List<Tupla> gHeuristica = grafo;
         List<Integer> sHeuristica = new ArrayList<Integer>();
